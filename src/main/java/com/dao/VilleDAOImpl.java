@@ -18,13 +18,15 @@ public class VilleDAOImpl implements VilleDAO {
 	public ArrayList<Ville> getInfoVille() {
 		Ville ville = null;
 		ArrayList<Ville> villes = new ArrayList<Ville>();
-		Connection con = JDBCConfiguration.getConnexionBDD();
 
 		String requete = "SELECT * FROM ville_france";
 
-		try {
+		try(
+			Connection con = JDBCConfiguration.getConnexionBDD();
 			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(requete);
+			ResultSet rs = stmt.executeQuery(requete)
+		)
+		{
 			while (rs.next()) {
 				ville = new Ville();
 				ville.setCodeCommune(rs.getString(1));
@@ -36,7 +38,6 @@ public class VilleDAOImpl implements VilleDAO {
 				ville.setLongitude(rs.getString(7));
 				villes.add(ville);
 			}
-			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
