@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.springframework.stereotype.Repository;
 
@@ -40,7 +42,7 @@ public class VilleDAOImpl implements VilleDAO {
 			}
 			con.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Logger.getLogger("logger").log(Level.WARNING, "Context",e);
 		}
 		return villes;
 	}

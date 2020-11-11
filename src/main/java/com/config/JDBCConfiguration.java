@@ -2,6 +2,8 @@ package com.config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +23,7 @@ public class JDBCConfiguration {
 			System.out.println("Connecter");
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger("logger").log(Level.WARNING, "Context",e);
 			System.out.println("Erreur");
 			System.exit(0);
 		}
