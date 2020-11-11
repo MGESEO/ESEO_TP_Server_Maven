@@ -20,7 +20,7 @@ public class VilleDAOImpl implements VilleDAO {
 		ArrayList<Ville> villes = new ArrayList<Ville>();
 
 		String requete = "SELECT * FROM ville_france";
-
+		//test
 		try(
 			Connection con = JDBCConfiguration.getConnexionBDD();
 			Statement stmt = con.createStatement();
