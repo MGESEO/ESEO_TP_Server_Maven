@@ -12,13 +12,13 @@ import org.springframework.context.annotation.Configuration;
 public class JDBCConfiguration {
 	@Bean
 	public static Connection getConnexionBDD() {
-		String url = "jdbc:postgresql://localhost:5432/sonar";
-		String user = "postgres";
-		String passwd = "postgres";
+		String url = "jdbc:mysql://localhost:3308/twic?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC&useSSL=false";
+		String user = "eseo";
+		String passwd = "eseo";
 		Connection conn = null;
 
 		try {
-			Class.forName("org.postgresql.Driver");
+			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(url, user, passwd);
 			System.out.println("Connecter");
 
